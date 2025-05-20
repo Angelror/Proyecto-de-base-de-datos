@@ -1,20 +1,20 @@
 <?php
 session_start();
- if(!isset($_SESSION['usuario'])){
+ if(!isset($_SESSION['id_usuario'])){
     header("Location: ../index.php");
     exit;
  }
 
- $usuario = $_SESSION['usuario'];
+ $usuario = $_SESSION['id_usuario'];
 
- $conexion = new mysqli("localhost","root","Angel231004#","test");
+ $conexion = new mysqli("localhost","root","Angel231004#","tiendaropa");
  if($conexion->connect_error){
     die("Error de conexion:" . $conexion->connect_error);
  }
 
- $sql = "DELETE FROM prueba WHERE usuario=?";
+ $sql = "DELETE FROM usuario WHERE id_usuario=?";
  $stmt = $conexion->prepare($sql);
- $stmt->bind_param("s", $usuario);
+ $stmt->bind_param("i", $usuario);
 
  if($stmt->execute()){
     session_destroy();

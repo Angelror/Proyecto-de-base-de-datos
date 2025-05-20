@@ -40,9 +40,9 @@ require_once 'config/sesion.php';
             </div>
             <div class="datos">
                 <strong>Usuario:</strong>
-                <span><?php echo htmlspecialchars($usuario['usuario']); ?></span>
+                <span><?php echo htmlspecialchars($usuario['nombre_usuario']); ?></span>
                 <strong>Correo:</strong>
-                <span><?php echo htmlspecialchars($usuario['email']); ?></span>
+                <span><?php echo htmlspecialchars($usuario['correo']); ?></span>
                 <strong> Celular:</strong>
                 <span><?php echo htmlspecialchars($usuario['telefono']); ?></span>
             </div>

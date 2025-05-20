@@ -8,7 +8,7 @@ session_start();
 $servidor = '127.0.0.1';
 $admin = 'root';
 $clave = 'Angel231004#';
-$bd = 'test';
+$bd = 'tiendaropa';
 
 try{
     $conexion = new PDO("mysql:host=$servidor;dbname=$bd;", $admin, $clave);
@@ -19,7 +19,7 @@ try{
         $usuario = $_POST['usuario'] ?? '';
         $password = $_POST['password'] ?? '';
 
-        $sql = "SELECT * FROM prueba WHERE usuario = :usuario";
+        $sql = "SELECT * FROM usuario WHERE nombre_usuario = :usuario";
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(':usuario', $usuario);
         $stmt->execute();
@@ -27,8 +27,9 @@ try{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-        if($user && $password === $user['contrasena'])
+        if($user && $password === $user['contraseña'])
         {
+            $_SESSION['id_usuario'] = $user['id_usuario'];
             $_SESSION['usuario'] = $usuario;
             header("Location: ../index.php");
             exit;

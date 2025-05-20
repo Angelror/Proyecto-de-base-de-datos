@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 $servidor = '127.0.0.1';
 $admin = 'root';
 $clave = 'Angel231004#';
-$bd = 'test';
+$bd = 'tiendaropa';
 
 try{
     $conexion = new PDO("mysql:host=$servidor;dbname=$bd;",$admin,$clave);
@@ -18,7 +18,7 @@ try{
         $tel = $_POST["tel"] ?? '';
         $password = $_POST["password"] ?? '';
 
-        $sql = "INSERT INTO prueba (usuario, email, telefono, contrasena) VALUES (:usuario, :email, :tel, :password)";
+        $sql = "INSERT INTO usuario (nombre_usuario, correo, telefono, contraseña) VALUES (:usuario, :email, :tel, :password)";
 
         $stmt = $conexion->prepare($sql);
 

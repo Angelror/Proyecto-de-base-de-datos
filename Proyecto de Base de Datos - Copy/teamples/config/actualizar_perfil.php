@@ -7,7 +7,7 @@ if (!isset($_SESSION['usuario']))
     exit;
 }
 
-$conexion = new mysqli("localhost","root","Angel231004#","test");
+$conexion = new mysqli("localhost","root","Angel231004#","tiendaropa");
 if($conexion->connect_error)
 {
     die("Error de conexion:" . $conexion->connect_error);
@@ -25,12 +25,12 @@ if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
 
 if(!empty($password))
 {
-    $sql = "UPDATE prueba SET usuario=?, email=?, telefono=?, contrasena=? WHERE usuario=?";
+    $sql = "UPDATE usuario SET nombre_usuario=?, correo=?, telefono=?, contraseña=? WHERE nombre_usuario=?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("sssss",$nuevoUsuario,$email,$tel,$password,$usuario);
 }
 else{
-    $sql = "UPDATE prueba SET usuario=?, email=?, telefono=? WHERE usuario=?";
+    $sql = "UPDATE usuario SET nombre_usuario=?, correo=?, telefono=? WHERE nombre_usuario=?";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("ssss",$nuevoUsuario,$email,$tel,$usuario);
 }
